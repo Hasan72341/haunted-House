@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac system files
+.DS_Store
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Static cache
+static/.gitkeep
+
+# VS Code settings
+.vscode/
+
+# Others
+*.log
