@@ -72,6 +72,8 @@ const walls = new THREE.Mesh(
      })
 )
 walls.position.y = 2.5/2
+walls.castShadow = true
+
 house.add(walls)
 
 
@@ -102,6 +104,8 @@ const floor = new THREE.Mesh(
 
 floor.rotation.x = - Math.PI * 0.5
 floor.position.y = 0
+
+floor.receiveShadow = true
 scene.add(floor)
 
 
@@ -115,7 +119,7 @@ const roof = new THREE.Mesh(
 
 roof.position.y = 3
 roof.rotation.y = Math.PI * 0.25
-
+roof.castShadow = true
 
 house.add(roof)
 
@@ -151,6 +155,8 @@ const bushMaterial = new THREE.MeshStandardMaterial({ color: '#70d022' })
 
 const Bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
 
+Bush1.castShadow = true
+
 house.add(Bush1)
 
 Bush1.position.x = 1.5
@@ -164,17 +170,19 @@ house.add(bush2)
 
 bush2.position.set(1.927,0,2.787)
 bush2.scale.set(0.622, 0.902, 0.412)
-
+bush2.castShadow = true
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial)
 house.add(bush3)
 bush3.position.set(-1.146,0.083,2.173)
+bush3.castShadow = true
 
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial)
 house.add(bush4)
 bush4.position.set(-1.515,0,2.419)
 bush4.scale.set(0.739,0.575,0.482)
+bush4.castShadow = true
 
 
 
@@ -196,6 +204,7 @@ for (let i = 0; i < 50; i++)
     grave.rotation.y = (Math.random() - 0.5) * Math.PI * 0.1
     grave.rotation.x = (Math.random() - 0.5) * Math.PI * 0.1
     grave.rotation.z = (Math.random() - 0.5) * Math.PI * 0.1
+    grave.castShadow = true
 
     graves.add(grave)
 }
@@ -246,6 +255,8 @@ const doorLight = new THREE.PointLight('#ff8400', 3, 7)
 doorLight.position.set(0, 2.2, 2.7)
 house.add(doorLight)
 
+doorLight.castShadow = true
+moonLight.castShadow = true
 
 /**
  * Sizes
@@ -293,7 +304,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setClearColor('#262837')
-
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 /**
  * Animate
